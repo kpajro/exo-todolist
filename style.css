@@ -1,0 +1,134 @@
+body{
+    background-color: rgb(235,235,240);
+}
+
+h1 {
+    color: rgb(51, 51, 51);
+    text-align: center;
+}
+
+button {
+    width: 3.5rem;
+    height: 2rem;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 0.7fr 1fr;
+    width: 100vw;
+    border-style: solid;
+    border-color: rgb(225,225,220);
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    overflow-y: hidden;
+}
+
+.error{
+    position: absolute;
+    background-color: orange;
+    padding: 16px;
+    right: 4vw;
+    top: 5px;
+}
+
+.addItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    margin-bottom: 16px;
+}
+
+.addItem > *{
+    padding: 0.4rem;
+}
+
+.itemsList{
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.itemInput{
+    padding: 0.25rem;
+}
+
+.itemImg{
+    width: 16px;
+    height: 20px;
+}
+
+.todoItem{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 4rem;
+    background: linear-gradient(rgb(215,215,220),rgb(225,225,220));
+    overflow: hidden;
+}
+
+@keyframes check {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 0.5;
+        text-decoration: line-through;
+        color: gray;
+    }
+}
+
+@keyframes uncheck {
+    0% {
+        transform: scale(1.05);
+        opacity: 0.5;
+        text-decoration: line-through;
+        color: gray;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        text-decoration: none;
+        color: black;
+    }
+}
+
+@keyframes add{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes delete {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
+    }
+}
+
+.todoItem.totheright {
+    animation: delete 1.5s forwards;
+}
+
+.todoItem.checked {
+    animation: check 0.3s forwards;
+}
+
+.todoItem.unchecked {
+    animation: uncheck 0.3s forwards;
+}
+
+.todoItem.added{
+    animation: add 0.2s forwards
+}
