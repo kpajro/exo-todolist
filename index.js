@@ -31,7 +31,7 @@ function displayTasks(filter = 'all') {
     list.innerHTML = ''
     tasks.forEach(task => {
         if ((filter === 'todo' && task.done) || (filter === 'done' && !task.done)) {
-            return
+            return null
         }
         let todo = document.createElement("div")
         let name = document.createElement("span")
@@ -74,7 +74,6 @@ function displayTasks(filter = 'all') {
                 todo.classList.remove("checked")
             }
             saveData()
-            
         })
 
         edit.addEventListener("click", () => {
@@ -88,17 +87,17 @@ function displayTasks(filter = 'all') {
             changer.addEventListener("blur", () => {
                 task.name = changer.value
                 saveData()
-                displayTasks(options.value)
+                changer.remove()
+                displayTasks()
             })
         })
 
         del.addEventListener("click", () => {
             tasks = tasks.filter(t => t !== task)
             saveData()
-            displayTasks(options.value)
             todo.classList.add("totheright")
             setTimeout(()=>{
-                todo.remove()
+                
             },700)
         })
 
@@ -118,12 +117,8 @@ function saveData(){
 
 addbtn.addEventListener("click", (evt)=>{
     try {
-        let lasttodo = createTodo()
+        createTodo()
         saveData()
-        lasttodo.classList.add("added")
-        setTimeout(()=>{
-            lasttodo.classList.remove("added")
-        }, 200)
     } catch(err){
         console.log(err)
     }

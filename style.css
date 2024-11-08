@@ -21,7 +21,7 @@ button {
     border-bottom: 0;
     border-left: 0;
     border-right: 0;
-    overflow-y: hidden;
+    overflow-y: clip;
 }
 
 .error{
@@ -47,7 +47,7 @@ button {
 .itemsList{
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
+    overflow-y: clip;
 }
 
 .itemInput{
@@ -97,28 +97,19 @@ button {
     }
 }
 
-@keyframes add{
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 @keyframes delete {
     0% {
         transform: translateX(0);
         opacity: 1;
     }
     100% {
-        transform: translateX(100vw);
+        transform: translateX(25vw);
         opacity: 0;
     }
 }
 
 .todoItem.totheright {
-    animation: delete 1.5s forwards;
+    animation: delete 1.5s forwards !important;
 }
 
 .todoItem.checked {
@@ -127,8 +118,4 @@ button {
 
 .todoItem.unchecked {
     animation: uncheck 0.3s forwards;
-}
-
-.todoItem.added{
-    animation: add 0.2s forwards
 }
